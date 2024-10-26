@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MyEStore.Models.HangHoaVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/HangHoa.css" rel="stylesheet" />
+
+<h1>Danh sách Hàng hóa</h1>
+
+<div class="container">
+    @foreach(var hh in Model)
+    {
+        <div class="hh-box">
+            <h3 class="hh-box-name">@hh.TenHh</h3>
+            <img src="~/Hinh/HangHoa/@hh.Hinh" alt="@hh.TenHh" class="hh-box-img" />
+            <div class="hh-box-price">$ @hh.DonGia</div>
+            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@hh.MaHh" class="btn btn-primary hh-box-mua">MUA</a>
+        </div>
+    }
+</div>

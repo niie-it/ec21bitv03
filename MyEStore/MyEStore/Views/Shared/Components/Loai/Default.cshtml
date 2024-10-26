@@ -1,0 +1,8 @@
+﻿@model IEnumerable<MyEStore.Entities.Loai>
+
+@foreach(var lo in Model)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Products" asp-action="Index" asp-route-cateId="@lo.MaLoai">@lo.TenLoai</a>
+    </li>
+}

@@ -1,0 +1,36 @@
+﻿.hh-box {
+    width: 280px;
+    height: 350px;
+    box-shadow: 0 0 7px red;
+    display: inline-block;
+    margin: 7px;
+    text-align: center;
+    position: relative;
+}
+
+.hh-box-img {
+    width: 80%;
+    height: 80%;
+    margin-top: 10px;
+}
+
+.hh-box-name {
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    color: green;
+}
+
+.hh-box-price {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    color: blue;
+    font-size: larger;
+}
+
+.hh-box-mua {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
