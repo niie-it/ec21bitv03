@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MyEStore.Models.CartItem>
+
+<h2>Giỏ hàng</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaHh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenHh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hinh)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DonGia)
+			</th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThanhTien)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenHh)
+            </td>
+            <td>
+                <a asp-action="Detail" asp-route-id="@item.MaHh">
+                    <img src="~/Hinh/HangHoa/@item.Hinh" alt="@item.TenHh" style="height:100px;" />
+                </a>
+            </td>
+            <td>
+                @item.DonGia.ToString("#,##0.00")
+            </td>
+            <td>
+                <input value="@item.SoLuong" min="1" />
+            </td>
+            <td>
+                @item.ThanhTien.ToString("#,##0.00")
+            </td>
+            <td>
+                <a class="btn btn-danger" asp-action="RemoveCartItem" asp-route-id="@item.MaHh">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

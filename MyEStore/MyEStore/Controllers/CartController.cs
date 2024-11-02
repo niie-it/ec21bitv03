@@ -48,9 +48,10 @@ namespace MyEStore.Controllers
             CartItems = cart;
             return RedirectToAction("Index");
         }
+
         public IActionResult Index()
         {
-            return View();
+            return View(CartItems);
         }
     }
 }
