@@ -1,0 +1,87 @@
+﻿@model MyEStore.Entities.HangHoa
+
+<div>
+    <h2>@Model.TenHh</h2>
+    <hr />
+    <form asp-action="AddToCart" asp-controller="Cart" 
+        asp-route-id="@Model.MaHh">
+        Số lượng mua:
+        <input type="number" name="qty" value="1" min="0" style="width:45px;" />
+        <button class="btn btn-primary">Mua</button>
+    </form>
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaHh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaHh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenHh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenHh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenAlias)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenAlias)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaLoai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaLoai)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MoTaDonVi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MoTaDonVi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+        <dt class = "col-sm-2">
+            <img src="~/Hinh/HangHoa/@Model.Hinh" alt="@Model.TenHh" />
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Hinh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgaySx)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgaySx)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GiamGia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GiamGia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SoLanXem)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SoLanXem)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaNcc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaNcc)
+        </dd>
+    </dl>
+</div>
