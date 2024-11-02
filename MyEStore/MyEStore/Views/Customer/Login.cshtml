@@ -1,0 +1,25 @@
+﻿@model MyEStore.Models.LoginVM
+
+<h4>Login</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input name="ReturnUrl" value="@ViewBag.ReturnUrl" type="hidden" />
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-1">
+                <input type="submit" value="LOGIN" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

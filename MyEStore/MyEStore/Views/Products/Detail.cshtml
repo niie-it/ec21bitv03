@@ -1,12 +1,12 @@
 ﻿@model MyEStore.Entities.HangHoa
-
+<link href="~/css/HangHoa.css" rel="stylesheet" />
 <div>
     <h2>@Model.TenHh</h2>
     <hr />
     <form asp-action="AddToCart" asp-controller="Cart" 
         asp-route-id="@Model.MaHh">
         Số lượng mua:
-        <input type="number" name="qty" value="1" min="0" style="width:45px;" />
+        <input type="number" name="qty" value="1" min="0" class="so-luong-mua" />
         <button class="btn btn-primary">Mua</button>
     </form>
 

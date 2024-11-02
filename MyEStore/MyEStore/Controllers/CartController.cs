@@ -53,5 +53,23 @@ namespace MyEStore.Controllers
         {
             return View(CartItems);
         }
+        
+        public IActionResult RemoveCartItem(int id)
+        {
+            var cart = CartItems;
+            var item = cart.SingleOrDefault(p => p.MaHh == id);
+            if(item != null)
+            {
+                cart.Remove(item);
+                CartItems = cart;//update session
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ClearCart()
+        {
+            CartItems = new List<CartItem>();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MyEStore.Models.CartItem>
+<link href="~/css/HangHoa.css" rel="stylesheet" />
 
 <h2>Giỏ hàng</h2>
 <table class="table">
@@ -43,7 +44,7 @@
                 @item.DonGia.ToString("#,##0.00")
             </td>
             <td>
-                <input value="@item.SoLuong" min="1" />
+                    <input value="@item.SoLuong" min="1" type="number" class="so-luong-mua" />
             </td>
             <td>
                 @item.ThanhTien.ToString("#,##0.00")
@@ -55,3 +56,4 @@
 }
     </tbody>
 </table>
+<a class="btn btn-danger" asp-action="ClearCart">Xóa giỏ hàng</a>
