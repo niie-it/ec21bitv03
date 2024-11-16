@@ -67,7 +67,9 @@ namespace MyEStore.Controllers
 
 				// Put your logic to save the transaction here
 				// You can use the "reference" variable as a transaction key
-				// Lưu đơn hàng vô database
+				// 1. Lưu đơn hàng vô database
+				//kèm transactionId của Seller: response.payments.captures[0].id
+				// 2. Xóa session giỏ hàng
 
 				return Ok(response);
 			}
