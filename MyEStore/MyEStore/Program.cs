@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MyEStore.Entities;
+using MyEStore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,15 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/Customer/Login";
         options.AccessDeniedPath = "/Forbidden/";
     });
+
+builder.Services.AddSingleton(x =>
+	new PaypalClient(
+		builder.Configuration["PayPalOptions:ClientId"],
+		builder.Configuration["PayPalOptions:ClientSecret"],
+		builder.Configuration["PayPalOptions:Mode"]
+	)
+);
+
 
 var app = builder.Build();
 

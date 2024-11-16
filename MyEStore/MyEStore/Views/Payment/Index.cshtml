@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MyEStore.Models.CartItem>
 <link href="~/css/HangHoa.css" rel="stylesheet" />
 
-<h2>Giỏ hàng</h2>
+<h2>Thông tin Thanh toán</h2>
 <table class="table">
 	<thead>
 		<tr>
@@ -45,7 +45,7 @@
 					@item.DonGia.ToString("#,##0.00")
 				</td>
 				<td>
-					<input value="@item.SoLuong" min="1" type="number" class="so-luong-mua" />
+					@item.SoLuong
 				</td>
 				<td>
 					@item.ThanhTien.ToString("#,##0.00")
@@ -58,6 +58,41 @@
 	</tbody>
 </table>
 <div>
-	<a class="btn btn-danger" asp-action="ClearCart">Xóa giỏ hàng</a>
-	<a class="btn btn-success" asp-action="Index" asp-controller="Payment">Thanh toán</a>
+	<div id="paypal-button-container" style="max-width:200px;"></div>
+
+	@section Scripts {
+
+		<script src="https://www.paypal.com/sdk/js?client-id=@ViewBag.PaypalClientId"></script>
+		<script>
+			paypal.Buttons({
+				style: {
+					disableMaxWidth: true
+				},
+				createOrder: (data, actions) => {
+					return fetch("/Payment/PaypalOrder", {
+						method: "post",
+					}).then((response) => {
+						if (!response.ok) {
+							return response.json().then(error => { throw error; });
+						}
+
+						return response.json();
+					}).then((order) => order.id)
+						.catch(error => alert(error.message));
+				},
+				onApprove: (data, actions) => {
+					return fetch(`/Payment/PaypalCapture?orderId=${data.orderID}`, {
+						method: "post",
+					}).then((response) => {
+						if (!response.ok) {
+							return response.json().then(error => { throw error; });
+						}
+
+						//Đổi địa chỉ tới action thông báo thành công
+						window.location.href = "/Payment/Success";
+					}).catch(error => alert(error.message));
+				}
+			}).render('#paypal-button-container');
+		</script>
+	}
 </div>
