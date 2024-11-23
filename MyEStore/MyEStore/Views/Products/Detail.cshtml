@@ -1,8 +1,29 @@
 ﻿@model MyEStore.Entities.HangHoa
+
+@section MyStyles{
+    <meta property="og:title" content="@Model.TenHh" />
+    <meta property="og:description" content="@Model.MoTaDonVi" />
+    <meta property="og:url" content="https://localhost:7238/Products/Detail/@Model.MaHh" />
+    <meta property="og:image" content="https://localhost:7238/Hinh/HangHoa/@Model.Hinh" />
+
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=67414a83e90570001a5a614a&product=inline-share-buttons&source=platform" async="async"></script>
+}
 <link href="~/css/HangHoa.css" rel="stylesheet" />
 <div>
     <h2>@Model.TenHh</h2>
     <hr />
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- AddToAny BEGIN -->
+    <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://localhost:7238/Products/Detail/@Model.MaHh" data-a2a-title="@Model.TenHh">
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_email"></a>
+    </div>
+    <script defer src="https://static.addtoany.com/menu/page.js"></script>
+    <!-- AddToAny END -->
+
     <form asp-action="AddToCart" asp-controller="Cart" 
         asp-route-id="@Model.MaHh">
         Số lượng mua:
