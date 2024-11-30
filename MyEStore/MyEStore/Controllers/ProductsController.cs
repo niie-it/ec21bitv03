@@ -23,13 +23,25 @@ namespace MyEStore.Controllers
             {
                 MaHh = hh.MaHh,
                 TenHh = hh.TenHh,
+                TenAlias = hh.TenAlias,
                 DonGia = hh.DonGia ?? 0,
                 Hinh = hh.Hinh
             }).ToList();
             return View(result);
         }
 
-        public IActionResult Detail(int id)
+        [HttpGet("san-pham/{slug}")]
+		public IActionResult MoreDetail(string slug)
+		{
+			var data = _ctx.HangHoas.SingleOrDefault(hh => hh.TenAlias == slug);
+			if (data == null)
+			{
+				return NotFound();
+			}
+			return View("Detail", data);
+		}
+
+		public IActionResult Detail(int id)
         {
             var data = _ctx.HangHoas.SingleOrDefault(hh => hh.MaHh == id);
             if (data == null)

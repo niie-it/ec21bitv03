@@ -4,6 +4,7 @@
 	{
 		public int MaHh { get; set; }
 		public string TenHh { get; set; }
+		public string TenAlias { get; set; }
 		public double DonGia { get; set; }
 		public string Hinh { get; set; }
 	}
