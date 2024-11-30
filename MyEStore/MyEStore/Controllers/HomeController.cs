@@ -13,6 +13,13 @@ namespace MyEStore.Controllers
 			_logger = logger;
 		}
 
+
+		// /Home/Slug?s=xxxxx
+		public IActionResult Slug(string s)
+		{
+			return Content(s.ToSlug());
+		}
+
 		public IActionResult Index()
 		{
 			return View();
